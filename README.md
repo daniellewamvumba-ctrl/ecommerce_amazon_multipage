@@ -17,3 +17,5 @@ it then start scrolling down to load more products down the page
 
  The data is saved successfully to a csv
  
+
+ This project is for obtaining products on just singlecategory but i will improve it to obtain data from multiple pages on different categories as queries
