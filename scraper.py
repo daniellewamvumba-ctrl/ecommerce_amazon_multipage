@@ -10,6 +10,18 @@ headers=["Title","Price","Rating","Reviews"]
 max_pages=10
 max_pages_per_context=3
 
+#Mouse hover function
+async def human_hover(page):
+    """Finds a random product and hovers over it to mimic interest"""
+    try:
+        products = await page.locator("div[data-component-type='s-search-result']").all()
+        if products:
+            target = random.choice(products)
+            await target.hover()
+            await asyncio.sleep(random.uniform(0.5, 2.0))
+    except:
+        pass
+
 #Human typing simulation
 async def human_typing(element,text):
     """Simulates human typing by introducing random delays between keystrokes"""
@@ -141,6 +153,7 @@ async def scrape_amazon():
 
             #Extract product containers
             products=await page.locator("div[data-component-type='s-search-result']").all()
+            await human_hover(page)
             print(f"Found {len(products)} on the page extracting details...")
             await scrape_product_details(products)
             
