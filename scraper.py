@@ -5,6 +5,15 @@ from playwright.async_api import async_playwright
 from playwright_stealth import Stealth
 import os
 
+
+# Performin a human distraction
+async def human_distraction():
+    """Simulates a user being distracted for a while"""
+    if random.random() < 0.5:
+        long_pause=random.uniform(30,90)
+        print(f"Simulating a distraction for {int(long_pause)} seconds...")
+        await asyncio.sleep(long_pause)
+
 csv_file="amazon_many_pages.csv"
 headers=["Title","Price","Rating","Reviews"]
 max_pages=10
@@ -143,6 +152,8 @@ async def scrape_amazon():
                     await page.goto(f"https://www.amazon.com/s?k={query}&page={current_page_number}", wait_until="domcontentloaded", timeout=60000)
                     await asyncio.sleep(3)
                 await mouse_moves(page)
+                print("Simulating a coffee braek...")
+                await human_distraction()
 
 
             #Scraping logic
