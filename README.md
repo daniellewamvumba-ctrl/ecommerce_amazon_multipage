@@ -19,3 +19,6 @@ it then start scrolling down to load more products down the page
  
 
  This project is for obtaining products on just singlecategory but i will improve it to obtain data from multiple pages on different categories as queries
+
+
+ Still updating the code added a human destruction to the code to simulate someone being destructed and stopping for a moment
