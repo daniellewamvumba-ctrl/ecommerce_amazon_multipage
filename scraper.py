@@ -5,7 +5,17 @@ from playwright.async_api import async_playwright
 from playwright_stealth import Stealth
 import os
 
-
+#human hover function
+async def human_hover(page):
+    """Finds a random product and hovers over it to mimic interest"""
+    try:
+        products=await page.locator("div[data-component-type='s-search-result']").all()
+        if products:
+            target=random.choice(products)
+            await target.hover()
+            await asyncio.sleep(random.uniform(0.5, 2.0))
+    except:
+        pass
 # Performin a human distraction
 async def human_distraction():
     """Simulates a user being distracted for a while"""
@@ -154,6 +164,7 @@ async def scrape_amazon():
                 await mouse_moves(page)
                 print("Simulating a coffee braek...")
                 await human_distraction()
+                await human_hover(page)
 
 
             #Scraping logic
