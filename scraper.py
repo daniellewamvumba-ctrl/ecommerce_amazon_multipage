@@ -24,6 +24,19 @@ async def human_distraction():
         print(f"Simulating a distraction for {int(long_pause)} seconds...")
         await asyncio.sleep(long_pause)
 
+
+#Rndom delay function to mimic human behavior
+async def random_delay(type="short"):
+    if type == "short":
+        # Quick actions like clicking a button
+        await asyncio.sleep(random.uniform(1.2, 3.5))
+    elif type == "medium":
+        # Reading a product title/price
+        await asyncio.sleep(random.uniform(4.0, 8.0))
+    elif type == "long":
+        # Mimicking "reading" the page or a context switch
+        await asyncio.sleep(random.uniform(10.0, 25.0))
+
 csv_file="amazon_many_pages.csv"
 headers=["Title","Price","Rating","Reviews"]
 max_pages=10
