@@ -22,3 +22,6 @@ it then start scrolling down to load more products down the page
 
 
  Still updating the code added a human destruction to the code to simulate someone being destructed and stopping for a moment
+
+
+ Updated the code by adding helper functions
